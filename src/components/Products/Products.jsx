@@ -35,9 +35,11 @@ import { useQuery } from "@tanstack/react-query";
 import ProductCard from "../ProductCard/ProductCard";
 import { Link } from "react-router-dom";
 import ProductsDetails from "../ProductsDetails/ProductsDetails";
-export default function Products() {
+import { useContext } from "react";
+import { CartContext } from "../../Context/CartContext";
 
-  function getProducts() {
+export default function Products() {
+ function getProducts() {
     return axios.get("https://fakestoreapi.com/products");
   }
 
@@ -48,7 +50,7 @@ export default function Products() {
   });
   if (isLoading) {
     return <h3 className="text-center mt-5">
-is Loading ....
+      is Loading ....
     </h3>;
   }
 

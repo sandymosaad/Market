@@ -3,10 +3,10 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import "bootstrap/dist/css/bootstrap.min.css";
+
 import Style from "./ProductsDetails.module.css"; 
 export default function ProductsDetails() {
   const { id } = useParams();
-
   const getProductDetails = async (id) => {
     const { data } = await axios.get(`https://fakestoreapi.com/products/${id}`);
     return data;
@@ -44,7 +44,7 @@ export default function ProductsDetails() {
           </div>
 
           <div className="mt-3">
-            <button className="btn btn-primary me-2">Add to Cart</button>
+            {/* <button className="btn btn-primary me-2" onClick={()=> addToCart(product    )}>Add to Cart</button> */}
             <Link to="/products" className="btn btn-outline-secondary">
             Back to Products
             </Link>

@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import {useContext} from "react";
+import {CartContext} from "../../Context/CartContext";
 
 export default function ProductCard({ product }) {
+    const {addToCart} = useContext(CartContext);
+
     return (
         <div className="col-md-3">
         <div className="card h-100">
@@ -32,14 +36,13 @@ export default function ProductCard({ product }) {
             <p className="fw-bold text-success mt-auto">
                 ${product.price}
             </p>
-
-            <Link
-                to={`/productdetails/${product.id}`}
-                className="btn btn-sm btn-outline-primary mt-2"
-            >
-                View Details
-            </Link>
             </div>
+        </Link>
+        <Link
+            className="btn btn-sm btn-outline-primary mt-2"
+            onClick={()=> addToCart(product    )}
+        >
+            Add to Cart
         </Link>
         </div>
         </div>
