@@ -12,10 +12,12 @@ import Brands from './components/Brands/Brands';
 import Cart from './components/Cart/Cart';
 import CounterContextProvider from './Context/counterContext'
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+// import {queryClient, QueryClientProvider} from 'react-query';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import ProductDetails from './components/ProductsDetails/ProductsDetails'
+import CartContextProvider from './Context/CartContext'
 
-
-
-
+let queryClient = new QueryClient();
 let routers = createBrowserRouter([
   {
     path: "/",
@@ -36,6 +38,14 @@ let routers = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <Products />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "productdetails/:id",
+        element: (
+          <ProtectedRoute>
+            <ProductDetails />
           </ProtectedRoute>
         ),
       },
@@ -76,9 +86,15 @@ let routers = createBrowserRouter([
 
 function App() {
   return  <>
-  <CounterContextProvider>
-       <RouterProvider router={routers}></RouterProvider>
-  </CounterContextProvider>
+  <CartContextProvider>
+    <QueryClientProvider client={queryClient}>
+      <CounterContextProvider>
+        <RouterProvider router={routers}></RouterProvider>
+      </CounterContextProvider>
+    </QueryClientProvider>
+  </CartContextProvider>
+
+
   </>
 }
 
