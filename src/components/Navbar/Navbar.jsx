@@ -5,9 +5,14 @@ import  logo from "../../Assets/images/logo.jpg"
 import { useContext } from "react";
 import { CounterContext } from "../../Context/counterContext";
 import { useNavigate } from "react-router-dom";
-
+import {CartContext} from "../../Context/CartContext"
 export default function Navbar(){
+
     const { userToken, setUserToken } = useContext(CounterContext);
+    const { cartItems } = useContext(CartContext);
+
+    let cartItemsNumber = cartItems.length;
+
     const navigate = useNavigate();
 
     function logout() {
@@ -47,6 +52,10 @@ export default function Navbar(){
                     <i className="fa-brands fa-twitter mx-2"></i>
                     <i className="fa-brands fa-instagram mx-2"></i>
                     <i className="fa-brands fa-whatsapp mx-2"></i>
+                    <Link className="nav-link mx-2 " to="cart">
+                        <i className="fa-solid fa-cart-shopping " ></i> 
+                        <span className="bg-info rounded">{cartItemsNumber}</span> 
+                    </Link>
                 </li>
 
             {!userToken && (

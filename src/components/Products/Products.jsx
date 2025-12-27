@@ -39,6 +39,7 @@ import { useContext } from "react";
 import { CartContext } from "../../Context/CartContext";
 
 export default function Products() {
+  
  function getProducts() {
     return axios.get("https://fakestoreapi.com/products");
   }

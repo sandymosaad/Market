@@ -16,7 +16,7 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import ProductDetails from './components/ProductsDetails/ProductsDetails'
 import CartContextProvider from './Context/CartContext'
-
+import CategorieProducts from './components/CategorieProducts/CategorieProducts';
 let queryClient = new QueryClient();
 let routers = createBrowserRouter([
   {
@@ -70,6 +70,14 @@ let routers = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <Cart />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "categories/:category",
+        element: (
+          <ProtectedRoute>
+            <CategorieProducts />
           </ProtectedRoute>
         ),
       },

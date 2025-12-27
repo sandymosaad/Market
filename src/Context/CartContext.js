@@ -1,13 +1,15 @@
 import { createContext, useEffect, useState } from "react";
-import axios from "axios";
 export const CartContext = createContext();
 
-export default function CartContextProvider({ children }) {
 
+export default function CartContextProvider({ children }) {
+    
   const [cartItems, setCartItems] = useState(() => {
-    const savedCart = localStorage.getItem("cart");
+    const savedCart = localStorage.getItem("cart") || [];
     return savedCart ? JSON.parse(savedCart) : [];
   });
+
+
 
   useEffect(()=>{
     localStorage.setItem('cart', JSON.stringify(cartItems))

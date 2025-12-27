@@ -2,13 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import {useContext} from "react";
 import {CartContext} from "../../Context/CartContext";
+import Style from "./ProductCard.module.css"; 
 
 export default function ProductCard({ product }) {
     const {addToCart} = useContext(CartContext);
 
     return (
         <div className="col-md-3">
-        <div className="card h-100">
+        <div className={`card h-100 ${Style.productCard}`} >
         <Link to={`/productdetails/${product.id}`}>  
             <img
             src={product.image}
